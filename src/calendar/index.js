@@ -9,6 +9,7 @@ import XDate from 'xdate';
 import dateutils from '../dateutils';
 import {xdateToData, parseDate} from '../interface';
 import styleConstructor from './style';
+import styleConstructorDay from './day/basic/style';
 import Day from './day/basic';
 import UnitDay from './day/period';
 import MultiDotDay from './day/multi-dot';
@@ -154,7 +155,8 @@ class Calendar extends Component {
       if (this.props.markingType === 'period') {
         dayComp = (<View key={id} style={{flex: 1}}/>);
       } else {
-        dayComp = (<View key={id} style={{width: 32}}/>);
+        const style = styleConstructorDay(this.props.theme);
+        dayComp = <View key={id} style={style.base} />;
       }
     } else {
       const DayComp = this.getDayComponent();
