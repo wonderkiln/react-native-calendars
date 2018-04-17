@@ -55,6 +55,8 @@ export default class AgendaView extends Component {
     renderEmptyData: PropTypes.func,
     // specify your item comparison function for increased performance
     rowHasChanged: PropTypes.func,
+    // keyExtractor: (item: any, index: number) => string
+    keyExtractor: PropTypes.func,
     
     // Max amount of months allowed to scroll to the past. Default = 50
     pastScrollRange: PropTypes.number,
@@ -277,6 +279,7 @@ export default class AgendaView extends Component {
         onScroll={() => {}}
         ref={(c) => this.list = c}
         theme={this.props.theme}
+        keyExtractor={this.props.keyExtractor}
       />
     );
   }
